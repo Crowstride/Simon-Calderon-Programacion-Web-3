@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <form method="POST">
+        <label>Nombre 1:</label>
+        <input type="text" name="nombre1" required>
+
+        <label>Nombre 2:</label>
+        <input type="text" name="nombre2" required>
+
+        <label>Nombre 3:</label>
+        <input type="text" name="nombre3" required>
+
+        <button type="submit">Comparar</button>
+    </form>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    {% if nombres_mayores is defined %}
+        <h2>Nombre(s) más largo(s):</h2>
+
+        {% for nombre in nombres_mayores %}
+            <p>{{ nombre }}</p>
+        {% endfor %}
+
+        <p>El o los nombres tiene(n): {{ cantidad }} caracteres.</p>
+    {% endif %}
+
+
+</body>
+</html>
